@@ -31,8 +31,11 @@ public:
 	void SwitchBase(int newBase);
 	void Print();
 	char*  GetValue(); // returns the number of digits for the current number
+	void SetValue(char * c);
 	int  GetDigitsCount(); // returns the number of digits for the current number
+	void  SetDigitsCount(int x);
 	int  GetBase(); // returns the current base
+	void  SetBase(int x);
 	void KillValue();
 };
 

@@ -25,18 +25,20 @@ Number::Number(Number& a)
 	this->len = a.GetDigitsCount();
 }
 
-Number::Number(Number&& a)
-{
+Number::Number(Number&& a) {
 	this->value = a.GetValue();
-	a.KillValue();
 	this->base = a.GetBase();
 	this->len = a.GetDigitsCount();
+	a.SetValue(nullptr);
+	a.SetBase(10);
+	a.SetDigitsCount(0);
 }
+
 
 Number::~Number()
 {
-	///delete this->value;
-	///this->base = NULL;
+	this->value = 0;
+	this->base = 0;
 }
 
 bool Number::operator>(Number b)
@@ -155,14 +157,29 @@ char* Number::GetValue()
 	return this->value;
 }
 
+void Number::SetValue(char* c)
+{
+	this->value = c; 
+}
+
 int Number::GetDigitsCount()
 {
 	return this->len;
 }
 
+void Number::SetDigitsCount(int x)
+{
+	this->len = x;
+}
+
 int Number::GetBase()
 {
 	return this->base;
+}
+
+void Number::SetBase(int x)
+{
+	this->base = x;
 }
 
 void Number::KillValue()
